@@ -58,3 +58,23 @@ ul{
   float: left;
   margin: 0 20px;
 }
+
+@media screen and (max-width: 480px){
+  #content{
+    padding: 0 5vw;
+  }
+
+  #headshot{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+
+  nav{
+    font-size: 12px;
+  }
+
+  nav ul{
+    margin-left: 0;
+  }
+}
