@@ -40,6 +40,15 @@ p{
   display: inline;
 }
 
+th{
+  border: 1px solid white;
+}
+
+td{
+  padding: 5px;
+  border-bottom: 1px solid white;
+}
+
 ul{
   top: 0;
   margin: 20px;
@@ -48,13 +57,18 @@ ul{
   text-align: center;
 }
 
-#content{
-  padding: 0 20vw;
+.pb-container{
+  width: 100%;
 }
 
-#embeds{
+.pb-table{
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+#content{
   padding: 0 20vw;
-  margin-top: 100px;
 }
 
 @media screen and (max-width: 480px){
