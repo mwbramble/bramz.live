@@ -7,6 +7,7 @@ fetch(baseURL + `users/v8l66r8m/personal-bests?embed=game,category`)
     .then((r) => findRuns(r))
   });
 
+
 function findRuns(runs){
   console.log(runs)
   for(let i = 0; i < runs.data.length; i++){
@@ -23,11 +24,21 @@ function findRuns(runs){
       s = '0' + s.toString()
     }
 
-    let timeStr = h.toString() + ':' + m.toString() + ':' + s.toString();
-
     let dateFix = new Date(runs.data[i].run.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'});
+    let timeStr = h.toString() + ':' + m.toString() + ':' + s.toString();
+    let catName = '';
 
     if(runs.data[i].game.data.names.international === 'Super Mario World'){
+      switch(runs.data[i].category.data.id){
+        case 'n2y1y72o':
+          catName = '11 Exit (Cloud)';
+        
+        case '':
+          catName = '11 Exit (Orb)';
+
+        case '':
+          catName = '11 Exit (Glitchless)';
+      }
       d.getElementById('smw-table').innerHTML +=
         (`
           <tr>
@@ -41,15 +52,17 @@ function findRuns(runs){
     if(runs.data[i].game.data.names.international === 'Super Mario Sunshine'){
       if(runs.data[i].category.data.name !== 'Individual World'){
         if(runs.data[i].category.data.name !== 'Full Completion'){
-        d.getElementById('sms-table').innerHTML +=
-          (`
-            <tr>
-              <td>${runs.data[i].category.data.name}</td>
-              <td>${dateFix}</td>
-              <td>${timeStr}</td>
-              <!-- <td>${runs.data[i].place}</td> --!>
-            </tr>
-          `)
+          if(runs.data[i].category.data.name !== 'All Shines'){
+            d.getElementById('sms-table').innerHTML +=
+              (`
+                <tr>
+                  <td>${runs.data[i].category.data.name}</td>
+                  <td>${dateFix}</td>
+                  <td>${timeStr}</td>
+                  <!-- <td>${runs.data[i].place}</td> --!>
+                </tr>
+              `)
+          }
         }
       }
     }
